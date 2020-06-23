@@ -1,0 +1,124 @@
+/* Global */
+body {
+  display: flex;
+  background-color: #222 !important;
+  color: white !important;
+  white-space: nowrap;
+  padding: 1rem;
+  max-width: 30rem;
+  flex-direction: column;
+}
+
+p {
+  margin: 0 0 1rem 0;
+}
+
+/* title */
+.title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.title img {
+  height: 1.2rem;
+}
+
+.title span {
+  margin-left: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: nomal;
+}
+
+/* card */
+.card {
+  flex-grow: 1;
+  background-color: white;
+  color: black;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.card .card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.card .option-list {
+  font-size: 1.1rem;
+}
+
+.card .option-list .option {
+  display: flex;
+  padding: 0.3rem 1rem;
+  align-items: center;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin: 0.5rem auto;
+}
+
+.card .option-list .option .option-name {
+  flex-grow: 1;
+  padding-right: 1rem;
+  cursor: pointer;
+}
+
+.ps {
+  font-size: 0.8rem;
+  color: gray;
+  display: inline-block;
+}
+
+/* Checkbox Switch */
+.switch {
+  display: inline-block;
+  position: relative;
+  width: 2rem;
+  height: 1rem;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+  background-color: #ccc;
+  transition: 0.3s;
+}
+
+.slider:before {
+  position: absolute;
+  bottom: 0.1rem;
+  left: 0.2rem;
+  content: "";
+  height: 0.8rem;
+  width: 0.8rem;
+  background-color: white;
+  transition: 0.3s;
+}
+
+input:checked + .slider {
+  background-color: #3173f6;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #3173f6;
+}
+
+input:checked + .slider:before {
+  transform: translateX(0.8rem);
+}
+
+.slider.round {
+  border-radius: 1rem;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
