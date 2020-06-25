@@ -1,11 +1,17 @@
 {
   "manifest_version": 2,
-  "name": "Only Hangul comments in Youtube",
-  "description": "",
+
+  "name": "한댓: 유튜브 한글 댓글만 보기",
+  "description": "'한국인 있나요..?' 유튜브 댓글을 한글 댓글만을 보여줍니다",
   "version": "0.1",
 
+  "icons": {
+    "128": "icon.png"
+  },
+
   "browser_action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
   },
 
   "permissions": ["*://*.youtube.com/*", "storage"],
