@@ -27,7 +27,7 @@ chrome.storage.local.get("ohc", function (items) {
           <input id="ohc-button" type="checkbox" ${isActive || isAlwaysActive ? "checked" : ""} style="${isAlwaysActive ? "opacity: 0.3" : ""}"/>
         </div>
       `;
-      document.getElementById("merch-shelf").appendChild(btn);
+      document.getElementById("meta").appendChild(btn);
 
       let ev;
       if (isProMode) {
