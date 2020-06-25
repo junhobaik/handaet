@@ -19,21 +19,25 @@ chrome.storage.local.get("ohc", function (items) {
       isBtnCreated = true;
     } else {
       const btn = document.createElement("div");
+      // btn.style.display = "flex";
       btn.style.position = "relative";
+      btn.style.minHeight = "24px";
+      // btn.style.justifyContent = "flex-end";
 
       btn.innerHTML = `
         <div class="inner-wrap" 
           style="
             color: #065fd4;
             border: 1px solid #3367d6; 
-            border-radius: 3px;
+            border-radius: 5px;
             background-color: #fff;
             padding: 3px 5px; 
             font-size: 12px; 
             display: flex; 
             align-items: center; 
+            margin-bottom: 3px;           
             position: absolute; 
-            bottom: -7px; 
+            bottom: 10px; 
             right: 0; 
             ${isAlwaysActive ? "pointer-events: none;" : ""}"
         >
