@@ -1,12 +1,18 @@
 /* Global */
 body {
+  margin: 0;
+  padding: 0;
+}
+
+.wrap {
+  border-radius: 15px;
   display: flex;
-  background-color: #222 !important;
+  background-color: #ff0000 !important;
   color: white !important;
   white-space: nowrap;
-  padding: 1rem;
   max-width: 30rem;
   flex-direction: column;
+  padding: 1rem 2rem;
 }
 
 p {
