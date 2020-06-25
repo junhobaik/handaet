@@ -22,7 +22,21 @@ chrome.storage.local.get("ohc", function (items) {
       btn.style.position = "relative";
 
       btn.innerHTML = `
-        <div class="inner-wrap" style="display: flex; align-items: center; position: absolute; bottom: 0; right: 0; ${isAlwaysActive ? "pointer-events: none;" : ""}">
+        <div class="inner-wrap" 
+          style="
+            color: #065fd4;
+            border: 1px solid #3367d6; 
+            border-radius: 3px;
+            background-color: #fff;
+            padding: 3px 5px; 
+            font-size: 12px; 
+            display: flex; 
+            align-items: center; 
+            position: absolute; 
+            bottom: -7px; 
+            right: 0; 
+            ${isAlwaysActive ? "pointer-events: none;" : ""}"
+        >
           <span>한글 댓글만</span>
           <input id="ohc-button" type="checkbox" ${isActive || isAlwaysActive ? "checked" : ""} style="${isAlwaysActive ? "opacity: 0.3" : ""}"/>
         </div>
@@ -57,6 +71,8 @@ chrome.storage.local.get("ohc", function (items) {
       }
 
       document.getElementById("ohc-button").addEventListener("click", ev);
+
+      createButton();
     }
   };
 
