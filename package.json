@@ -1,0 +1,29 @@
+{
+  "name": "yt-ohc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "newWatch.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "parcel": "^1.12.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf build && parcel build watch.js popup.html -d build --no-source-maps --detailed-report --no-cache && cp icon.png build/icon.png && cp manifest.json build/manifest.json"
+  },
+  "browserslist": "Chrome 70",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/junhobaik/yt-ohc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/junhobaik/yt-ohc/issues"
+  },
+  "homepage": "https://github.com/junhobaik/yt-ohc#readme"
+}
