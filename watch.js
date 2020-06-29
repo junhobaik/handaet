@@ -117,11 +117,13 @@ chrome.storage.local.get("ohc", function (items) {
       if (mutation.nextSibling?.nodeName === "#text" && mutation.addedNodes.length) {
         for (const node of mutation.addedNodes) {
           if (node.id === "content-text" && node.classList?.contains("ytd-comment-renderer")) {
-            const comment = node.innerText.substr(0, 6);
+            const comment = node.innerText;
+            const commentLength = comment.length;
+            const text = comment.substr(0, 6) + comment.substr(commentLength - 6, commentLength - 1);
 
             let isHangulComment = false;
 
-            for (const c of comment) {
+            for (const c of text) {
               if (isHangulText(c)) {
                 isHangulComment = true;
                 break;
@@ -141,7 +143,10 @@ chrome.storage.local.get("ohc", function (items) {
     const list = Array.from(document.querySelectorAll("#content-text.ytd-comment-renderer")).slice(isNoSlice ? 0 : hangulCommentCnt);
 
     for (const c of list) {
-      const text = c.innerText.substr(0, 6);
+      const comment = c.innerText;
+      const commentLength = comment.length;
+      const text = comment.substr(0, 6) + comment.substr(commentLength - 6, commentLength - 1);
+
       let isHangulComment = false;
 
       for (const t of text) {
