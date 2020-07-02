@@ -25,13 +25,17 @@ chrome.storage.local.get("ohc", function (items) {
     );
   };
 
+  const removeButton = () => {
+    const oldBtn = document.getElementById("ohc-button-wrap");
+    if (oldBtn) oldBtn.remove();
+  };
+
   const createButton = async (date) => {
     const comment = document.getElementById("comments");
     const commentHeader = document.querySelector("ytd-comments-header-renderer");
 
     if (comment && commentHeader) {
-      const oldBtn = document.getElementById("ohc-button-wrap");
-      if (oldBtn) oldBtn.remove();
+      removeButton();
 
       const newBtn = document.createElement("div");
       newBtn.id = "ohc-button-wrap";
@@ -169,11 +173,15 @@ chrome.storage.local.get("ohc", function (items) {
       const isNewPath = prevPathName !== newPathName;
       const isWatch = newPathName.includes("watch");
 
-      if (isNewPath && isWatch) {
-        isActive = isAlwaysActive;
-        hangulCommentCnt = 0;
-        createButton();
-        sortButtonClickEvent();
+      if (isNewPath) {
+        if (isWatch) {
+          isActive = isAlwaysActive;
+          hangulCommentCnt = 0;
+          createButton();
+          sortButtonClickEvent();
+        } else {
+          removeButton();
+        }
       }
 
       // pro
