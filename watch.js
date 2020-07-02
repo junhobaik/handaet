@@ -171,6 +171,7 @@ chrome.storage.local.get("ohc", function (items) {
 
       if (isNewPath && isWatch) {
         isActive = isAlwaysActive;
+        hangulCommentCnt = 0;
         createButton();
         sortButtonClickEvent();
       }
