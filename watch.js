@@ -1,5 +1,5 @@
 chrome.storage.local.get("ohc", function (items) {
-  const setting = items.ohc ?? [false, false];
+  const setting = items.ohc ?? [false, true];
 
   const isAlwaysActive = setting[0];
   const isProMode = setting[1];
@@ -9,7 +9,7 @@ chrome.storage.local.get("ohc", function (items) {
   let prevPathName = "";
   let isActiveChanged = false; // pro only
   let isOnObserver = false; // pro only
-  let hangulCommentCnt = 0; // normal only
+  let normalCnt = 0; // normal only
   let isAddedSortEvent = false; // normal only
 
   const isHangulText = (char) => {
@@ -44,17 +44,7 @@ chrome.storage.local.get("ohc", function (items) {
 
       newBtn.innerHTML = `
       <div class="inner-wrap" 
-        style="
-          color: #065fd4;
-          border: 1px solid #3367d6; 
-          border-radius: 5px;
-          background-color: #fff;
-          padding: 3px 5px; 
-          font-size: 12px; 
-          display: flex; 
-          align-items: center; 
-          margin-bottom: 3px;           
-          ${isAlwaysActive ? "pointer-events: none;" : ""}"
+        style="${isAlwaysActive ? "pointer-events: none;" : ""}"
       >
         <label for="ohc-button">한댓</label>
         <input id="ohc-button" type="checkbox" ${isActive || isAlwaysActive ? "checked" : ""} style="${isAlwaysActive ? "opacity: 0.3" : ""}"/>
@@ -71,14 +61,28 @@ chrome.storage.local.get("ohc", function (items) {
             setTimeout(() => detect(true), 1000);
             setTimeout(() => detect(true), 2500);
             setTimeout(() => detect(true), 5000);
+          } else {
+            const hideList = document.querySelectorAll(".ohc-hide");
+            for (const v of hideList) {
+              v.classList.remove("ohc-hide");
+            }
           }
+
           isActive = !isActive;
           isActiveChanged = true;
         };
       } else {
         ev = () => {
+          if (isActive) {
+            const hideList = document.querySelectorAll(".ohc-hide");
+            for (const v of hideList) {
+              v.classList.remove("ohc-hide");
+            }
+          }
+
           isActive = !isActive;
           isActiveChanged = true;
+          normalCnt = 0;
         };
       }
 
@@ -101,9 +105,9 @@ chrome.storage.local.get("ohc", function (items) {
               setTimeout(() => detect(true), 3000);
               setTimeout(() => detect(true), 5000);
             } else {
-              setTimeout(() => (hangulCommentCnt = 0), 1000);
-              setTimeout(() => (hangulCommentCnt = 0), 3000);
-              setTimeout(() => (hangulCommentCnt = 0), 5000);
+              setTimeout(() => (normalCnt = 0), 1000);
+              setTimeout(() => (normalCnt = 0), 3000);
+              setTimeout(() => (normalCnt = 0), 5000);
             }
           }
         });
@@ -134,7 +138,8 @@ chrome.storage.local.get("ohc", function (items) {
               }
             }
 
-            if (!isHangulComment) node.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.style.display = "none";
+            // if (!isHangulComment) node.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.style.display = "none";
+            if (!isHangulComment) node.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.classList.add("ohc-hide");
           }
         }
       }
@@ -144,7 +149,7 @@ chrome.storage.local.get("ohc", function (items) {
 
   // normal
   const detect = (isNoSlice) => {
-    const list = Array.from(document.querySelectorAll("#content-text.ytd-comment-renderer")).slice(isNoSlice ? 0 : hangulCommentCnt);
+    const list = Array.from(document.querySelectorAll("#content-text.ytd-comment-renderer")).slice(isNoSlice ? 0 : normalCnt);
 
     for (const c of list) {
       const comment = c.innerText;
@@ -156,12 +161,13 @@ chrome.storage.local.get("ohc", function (items) {
       for (const t of text) {
         if (isHangulText(t)) {
           isHangulComment = true;
-          if (!isNoSlice) hangulCommentCnt++;
           break;
         }
       }
 
-      if (!isHangulComment) c.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
+      // if (!isHangulComment) c.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
+      if (!isHangulComment) c.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.classList.add("ohc-hide");
+      if (!isNoSlice) normalCnt++;
     }
   };
 
@@ -176,7 +182,7 @@ chrome.storage.local.get("ohc", function (items) {
       if (isNewPath) {
         if (isWatch) {
           isActive = isAlwaysActive;
-          hangulCommentCnt = 0;
+          normalCnt = 0;
           createButton();
           sortButtonClickEvent();
         } else {

@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf build && parcel build watch.js -d build --no-source-maps --detailed-report --no-cache && cp icon.png build/icon.png && cp manifest.json build/manifest.json && cp -r lib build/lib && cp popup.html build/popup.html && cp popup.js build/popup.js && cp popup.css build/popup.css"
+    "build": "rm -rf build && parcel build watch.js -d build --no-source-maps --detailed-report --no-cache && cp watch.css build/watch.css && cp icon.png build/icon.png && cp manifest.json build/manifest.json && cp -r lib build/lib && cp popup.html build/popup.html && cp popup.js build/popup.js && cp popup.css build/popup.css"
   },
   "browserslist": "Chrome 75",
   "repository": {

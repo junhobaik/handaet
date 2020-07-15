@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   chrome.storage.local.get("ohc", function (items) {
-    const setting = items.ohc ?? [false, false];
+    const setting = items.ohc ?? [false, true];
 
     let checkboxList = document.querySelectorAll(".option input");
     for (let i = 0; i < checkboxList.length; i++) {
