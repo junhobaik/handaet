@@ -49,7 +49,7 @@ const Popup = () => {
         <a href="mailto:junhobaik@gmail.com">
           <span>© 2020 Junho Baik</span>
         </a>
-        <a href="#">
+        <a href="mailto:junhobaik@gmail.com">
           <span>문제 제보</span>
         </a>
       </footer>
