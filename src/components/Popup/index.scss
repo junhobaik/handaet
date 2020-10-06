@@ -64,6 +64,13 @@ body {
   }
 }
 
+.message {
+  text-align: right;
+  margin: 0.25rem 0 0 0;
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
 footer {
   display: flex;
   justify-content: space-between;

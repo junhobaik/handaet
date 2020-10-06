@@ -33,7 +33,7 @@ const Popup = () => {
       <div className="settings-wrap">
         <div className={`setttings-inner-wrap ${isLoad ? "loaded" : "loading"}`}>
           <div className="always-on-setting">
-            <span>항상 한글 댓글만 보기</span>
+            <span>항상 한글 댓글 보기</span>
             <div
               className={`slide-btn-box ${isAlwaysOn ? "on" : "off"}`}
               role="button"
@@ -44,6 +44,7 @@ const Popup = () => {
           </div>
         </div>
       </div>
+      <p className="message">유튜브 웹 새로고침 이후 변경된 설정이 적용됩니다</p>
       <footer>
         <a href="mailto:junhobaik@gmail.com">
           <span>© 2020 Junho Baik</span>
