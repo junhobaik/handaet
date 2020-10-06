@@ -6,7 +6,6 @@ const WriteFileWebpackPlugin = require("write-file-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  devtool: "cheap-module-source-map",
   entry: {
     watch: "./src/contents/watch.ts",
     popup: "./src/pages/popup.tsx",
