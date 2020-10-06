@@ -5,7 +5,7 @@
   "main": "watch.js",
   "scripts": {
     "dev": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "build": "rm -rf dist/ && webpack --mode production"
   },
   "keywords": [],
   "author": "",
