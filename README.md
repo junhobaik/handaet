@@ -14,6 +14,7 @@
 ### Tech Stack
 
 - React
+- TypeScript
 - Webpack
 - SCSS
 - Chrome
